@@ -6,7 +6,6 @@
  *
  */
 
-import type {SettingName} from '../appSettings';
 
 import * as React from 'react';
 import {
@@ -17,6 +16,7 @@ import {
   useMemo,
   useState,
 } from 'react';
+import type {SettingName} from '../appSettings';
 
 import {DEFAULT_SETTINGS} from '../appSettings';
 
