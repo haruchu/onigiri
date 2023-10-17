@@ -57,31 +57,34 @@ export default function Editor(): JSX.Element {
 	return (
 		<>
 			<ToolbarPlugin setIsLinkEditMode={setIsLinkEditMode} />
-			<DragDropPaste />
-			<HistoryPlugin externalHistoryState={historyState} />
-			<RichTextPlugin
-				contentEditable={
-					<div className="editor-scroller">
-						<div className="editor" ref={onRef}>
-							<ContentEditable />
+
+			<div className={`editor-container`}>
+				<DragDropPaste />
+				<HistoryPlugin externalHistoryState={historyState} />
+				<RichTextPlugin
+					contentEditable={
+						<div className="editor-scroller">
+							<div className="editor" ref={onRef}>
+								<ContentEditable />
+							</div>
 						</div>
-					</div>
-				}
-				placeholder={placeholder}
-				ErrorBoundary={LexicalErrorBoundary}
-			/>
-			<ImagesPlugin />
-			<InlineImagePlugin />
-			<LinkPlugin />
-			{floatingAnchorElem && !isSmallWidthViewport && (
-				<>
-					<FloatingLinkEditorPlugin
-						anchorElem={floatingAnchorElem}
-						isLinkEditMode={isLinkEditMode}
-						setIsLinkEditMode={setIsLinkEditMode}
-					/>
-				</>
-			)}
+					}
+					placeholder={placeholder}
+					ErrorBoundary={LexicalErrorBoundary}
+				/>
+				<ImagesPlugin />
+				<InlineImagePlugin />
+				<LinkPlugin />
+				{floatingAnchorElem && !isSmallWidthViewport && (
+					<>
+						<FloatingLinkEditorPlugin
+							anchorElem={floatingAnchorElem}
+							isLinkEditMode={isLinkEditMode}
+							setIsLinkEditMode={setIsLinkEditMode}
+						/>
+					</>
+				)}
+			</div>
 		</>
 	);
 }

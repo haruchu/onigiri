@@ -199,36 +199,8 @@ pre::-webkit-scrollbar-thumb {
   bottom: 20px;
 }
 
-#options-button::after {
-  background-image: url(./icons/gear.svg);
-}
-
-#test-recorder-button::after {
-  background-image: url(./icons/journal-code.svg);
-}
-
-#paste-log-button::after {
-  background-image: url(./icons/clipboard.svg);
-}
-
-#docs-button::after {
-  background-image: url(./icons/file-earmark-text.svg);
-}
-
 #test-recorder-button-snapshot {
   margin-right: auto;
-}
-
-#test-recorder-button-snapshot::after {
-  background-image: url(./icons/camera.svg);
-}
-
-#test-recorder-button-copy::after {
-  background-image: url(./icons/clipboard.svg);
-}
-
-#test-recorder-button-download::after {
-  background-image: url(./icons/download.svg);
 }
 
 .typeahead-popover {
@@ -343,6 +315,10 @@ i.bold {
   background-image: url(./icons/type-bold.svg);
 }
 
+i.italic {
+  background-image: url(./icons/type-italic.svg);
+}
+
 i.underline {
   background-image: url(./icons/type-underline.svg);
 }
@@ -399,59 +375,6 @@ i.redo {
   background-image: url(./icons/arrow-clockwise.svg);
 }
 
-i.sticky {
-  background-image: url(./icons/sticky.svg);
-}
-
-i.mic {
-  background-image: url(./icons/mic.svg);
-}
-
-i.import {
-  background-image: url(./icons/upload.svg);
-}
-
-i.export {
-  background-image: url(./icons/download.svg);
-}
-
-i.diagram-2 {
-  background-image: url(./icons/diagram-2.svg);
-}
-
-i.user {
-  background-image: url(./icons/user.svg);
-}
-
-i.equation {
-  background-image: url(./icons/plus-slash-minus.svg);
-}
-
-i.gif {
-  background-image: url(./icons/filetype-gif.svg);
-}
-
-i.copy {
-  background-image: url(./icons/copy.svg);
-}
-
-i.success {
-  background-image: url(./icons/success.svg);
-}
-
-i.prettier {
-  background-image: url(./icons/prettier.svg);
-}
-
-i.prettier-error {
-  background-image: url(./icons/prettier-error.svg);
-}
-
-i.page-break,
-.icon.page-break {
-  background-image: url(./icons/scissors.svg);
-}
-
 .link-editor .button.active,
 .toolbar .button.active {
   background-color: rgb(223, 232, 250);
@@ -502,50 +425,6 @@ i.page-break,
   vertical-align: -0.25em;
   position: absolute;
   right: 30px;
-  top: 0;
-  bottom: 0;
-  cursor: pointer;
-}
-
-.link-editor div.link-trash {
-  background-image: url(./icons/trash.svg);
-  background-size: 16px;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 35px;
-  vertical-align: -0.25em;
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  cursor: pointer;
-}
-
-.link-editor div.link-cancel {
-  background-image: url(./icons/close.svg);
-  background-size: 16px;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 35px;
-  vertical-align: -0.25em;
-  margin-right: 28px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  cursor: pointer;
-}
-
-.link-editor div.link-confirm {
-  background-image: url(./icons/success-alt.svg);
-  background-size: 16px;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 35px;
-  vertical-align: -0.25em;
-  margin-right: 2px;
-  position: absolute;
-  right: 0;
   top: 0;
   bottom: 0;
   cursor: pointer;
@@ -706,18 +585,6 @@ i.page-break,
   background-image: url(./icons/type-h3.svg);
 }
 
-.icon.h4 {
-  background-image: url(./icons/type-h4.svg);
-}
-
-.icon.h5 {
-  background-image: url(./icons/type-h5.svg);
-}
-
-.icon.h6 {
-  background-image: url(./icons/type-h6.svg);
-}
-
 .icon.bullet-list,
 .icon.bullet {
   background-image: url(./icons/list-ul.svg);
@@ -735,10 +602,6 @@ i.page-break,
 
 .icon.quote {
   background-image: url(./icons/chat-square-quote.svg);
-}
-
-.icon.code {
-  background-image: url(./icons/code.svg);
 }
 
 .switches {
@@ -1078,22 +941,6 @@ i.page-break,
   background-image: url(./icons/outdent.svg);
 }
 
-.actions i.lock {
-  background-image: url(./icons/lock-fill.svg);
-}
-
-.actions i.image {
-  background-image: url(./icons/file-image.svg);
-}
-
-.actions i.table {
-  background-image: url(./icons/table.svg);
-}
-
-.actions i.unlock {
-  background-image: url(./icons/lock.svg);
-}
-
 .actions i.left-align {
   background-image: url(./icons/text-left.svg);
 }
@@ -1108,14 +955,6 @@ i.page-break,
 
 .actions i.justify-align {
   background-image: url(./icons/justify.svg);
-}
-
-.actions i.disconnect {
-  background-image: url(./icons/plug.svg);
-}
-
-.actions i.connect {
-  background-image: url(./icons/plug-fill.svg);
 }
 
 .table-cell-action-button-container {

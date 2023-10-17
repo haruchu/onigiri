@@ -1,6 +1,5 @@
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import Editor from "./src/Editor";
-import Settings from "./src/Settings";
 import { SharedHistoryContext } from "./src/context/SharedHistoryContext";
 import PlaygroundNodes from "./src/nodes/PlaygroundNodes";
 import EditorTheme from "./src/themes/EditorTheme";
@@ -21,7 +20,6 @@ export const LexicalEditor = () => {
 				<div className="editor-shell">
 					<Editor />
 				</div>
-				<Settings />
 			</SharedHistoryContext>
 		</LexicalComposer>
 	);

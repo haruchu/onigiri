@@ -23,7 +23,7 @@ import {
 	REMOVE_LIST_COMMAND,
 } from "@lexical/list";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import { $createHeadingNode, $createQuoteNode, $isHeadingNode, HeadingTagType } from "@lexical/rich-text";
+import { $createHeadingNode, $createQuoteNode, $isHeadingNode, $isQuoteNode, HeadingTagType } from "@lexical/rich-text";
 import {
 	$getSelectionStyleValueForProperty,
 	$isParentElementRTL,
@@ -59,11 +59,11 @@ import {
 import { Dispatch, useCallback, useEffect, useState } from "react";
 import * as React from "react";
 
-import { IS_APPLE } from "../../shared/src/environment";
 import DropDown, { DropDownItem } from "../../ui/DropDown";
 import DropdownColorPicker from "../../ui/DropdownColorPicker";
 import { getSelectedNode } from "../../utils/getSelectedNode";
 import { sanitizeUrl } from "../../utils/url";
+import { IS_APPLE } from "../../shared/src/environment";
 
 const blockTypeToBlockName = {
 	bullet: "Bulleted List",
@@ -96,29 +96,6 @@ function getCodeLanguageOptions(): [string, string][] {
 }
 
 const CODE_LANGUAGE_OPTIONS = getCodeLanguageOptions();
-
-const FONT_FAMILY_OPTIONS: [string, string][] = [
-	["Arial", "Arial"],
-	["Courier New", "Courier New"],
-	["Georgia", "Georgia"],
-	["Times New Roman", "Times New Roman"],
-	["Trebuchet MS", "Trebuchet MS"],
-	["Verdana", "Verdana"],
-];
-
-const FONT_SIZE_OPTIONS: [string, string][] = [
-	["10px", "10px"],
-	["11px", "11px"],
-	["12px", "12px"],
-	["13px", "13px"],
-	["14px", "14px"],
-	["15px", "15px"],
-	["16px", "16px"],
-	["17px", "17px"],
-	["18px", "18px"],
-	["19px", "19px"],
-	["20px", "20px"],
-];
 
 const ELEMENT_FORMAT_OPTIONS: {
 	[key in Exclude<ElementFormatType, "">]: {
@@ -167,6 +144,7 @@ function dropDownActiveClass(active: boolean) {
 function BlockFormatDropDown({
 	editor,
 	blockType,
+	rootType,
 	disabled = false,
 }: {
 	blockType: keyof typeof blockTypeToBlockName;
@@ -301,55 +279,6 @@ function Divider(): JSX.Element {
 	return <div className="divider" />;
 }
 
-function FontDropDown({
-	editor,
-	value,
-	style,
-	disabled = false,
-}: {
-	editor: LexicalEditor;
-	value: string;
-	style: string;
-	disabled?: boolean;
-}): JSX.Element {
-	const handleClick = useCallback(
-		(option: string) => {
-			editor.update(() => {
-				const selection = $getSelection();
-				if ($isRangeSelection(selection)) {
-					$patchStyleText(selection, {
-						[style]: option,
-					});
-				}
-			});
-		},
-		[editor, style],
-	);
-
-	const buttonAriaLabel =
-		style === "font-family" ? "Formatting options for font family" : "Formatting options for font size";
-
-	return (
-		<DropDown
-			disabled={disabled}
-			buttonClassName={"toolbar-item " + style}
-			buttonLabel={value}
-			buttonIconClassName={style === "font-family" ? "icon block-type font-family" : ""}
-			buttonAriaLabel={buttonAriaLabel}
-		>
-			{(style === "font-family" ? FONT_FAMILY_OPTIONS : FONT_SIZE_OPTIONS).map(([option, text]) => (
-				<DropDownItem
-					className={`item ${dropDownActiveClass(value === option)} ${style === "font-size" ? "fontsize-item" : ""}`}
-					onClick={() => handleClick(option)}
-					key={option}
-				>
-					<span className="text">{text}</span>
-				</DropDownItem>
-			))}
-		</DropDown>
-	);
-}
-
 function ElementFormatDropdown({
 	editor,
 	value,
@@ -454,10 +383,8 @@ export default function ToolbarPlugin({ setIsLinkEditMode }: { setIsLinkEditMode
 	const [blockType, setBlockType] = useState<keyof typeof blockTypeToBlockName>("paragraph");
 	const [rootType, setRootType] = useState<keyof typeof rootTypeToRootName>("root");
 	const [selectedElementKey, setSelectedElementKey] = useState<NodeKey | null>(null);
-	const [fontSize, setFontSize] = useState<string>("15px");
 	const [fontColor, setFontColor] = useState<string>("#000");
 	const [bgColor, setBgColor] = useState<string>("#fff");
-	const [fontFamily, setFontFamily] = useState<string>("Arial");
 	const [elementFormat, setElementFormat] = useState<ElementFormatType>("left");
 	const [isLink, setIsLink] = useState(false);
 	const [isBold, setIsBold] = useState(false);
@@ -529,10 +456,9 @@ export default function ToolbarPlugin({ setIsLinkEditMode }: { setIsLinkEditMode
 				}
 			}
 			// Handle buttons
-			setFontSize($getSelectionStyleValueForProperty(selection, "font-size", "15px"));
+
 			setFontColor($getSelectionStyleValueForProperty(selection, "color", "#000"));
 			setBgColor($getSelectionStyleValueForProperty(selection, "background-color", "#fff"));
-			setFontFamily($getSelectionStyleValueForProperty(selection, "font-family", "Arial"));
 			setElementFormat(($isElementNode(node) ? node.getFormatType() : parent?.getFormatType()) || "left");
 		}
 	}, [activeEditor]);
@@ -702,8 +628,6 @@ export default function ToolbarPlugin({ setIsLinkEditMode }: { setIsLinkEditMode
 				</DropDown>
 			) : (
 				<>
-					<FontDropDown disabled={!isEditable} style={"font-family"} value={fontFamily} editor={editor} />
-					<FontDropDown disabled={!isEditable} style={"font-size"} value={fontSize} editor={editor} />
 					<Divider />
 					<button
 						disabled={!isEditable}
