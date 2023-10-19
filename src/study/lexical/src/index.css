@@ -551,6 +551,10 @@ i.number {
   overflow: hidden;
 }
 
+i.plus {
+  background-image: url(./icons/plus.svg);
+}
+
 i.chevron-down {
   background-color: transparent;
   background-size: contain;
@@ -558,6 +562,10 @@ i.chevron-down {
   height: 8px;
   width: 8px;
   background-image: url(./icons/chevron-down.svg);
+}
+
+i.image {
+  background-image: url(./icons/file-image.svg);
 }
 
 .ltr {

@@ -62,6 +62,8 @@ import DropdownColorPicker from "../../ui/DropdownColorPicker";
 import { getSelectedNode } from "../../utils/getSelectedNode";
 import { sanitizeUrl } from "../../utils/url";
 import { IS_APPLE } from "../../shared/environment";
+import { InsertImageDialog } from "../ImagesPlugin";
+import useModal from "../../hooks/useModal";
 
 const blockTypeToBlockName = {
 	bullet: "Bulleted List",
@@ -326,6 +328,8 @@ export default function ToolbarPlugin({ setIsLinkEditMode }: { setIsLinkEditMode
 	const [blockType, setBlockType] = useState<keyof typeof blockTypeToBlockName>("paragraph");
 	const [rootType, setRootType] = useState<keyof typeof rootTypeToRootName>("root");
 	const [selectedElementKey, setSelectedElementKey] = useState<NodeKey | null>(null);
+	const [modal, showModal] = useModal();
+
 	const [fontColor, setFontColor] = useState<string>("#000");
 	const [bgColor, setBgColor] = useState<string>("#fff");
 	const [elementFormat, setElementFormat] = useState<ElementFormatType>("left");
@@ -637,7 +641,39 @@ export default function ToolbarPlugin({ setIsLinkEditMode }: { setIsLinkEditMode
 				</>
 			)}
 			<Divider />
+			<DropDown
+				disabled={!isEditable}
+				buttonClassName="toolbar-item spaced"
+				buttonLabel="Insert"
+				buttonAriaLabel="Insert specialized editor node"
+				buttonIconClassName="icon plus"
+			>
+				<DropDownItem
+					onClick={() => {
+						showModal("Insert Image", (onClose: () => void) => (
+							<InsertImageDialog activeEditor={activeEditor} onClose={onClose} />
+						));
+					}}
+					className="item"
+				>
+					<i className="icon image" />
+					<span className="text">Image</span>
+				</DropDownItem>
+				<DropDownItem
+					onClick={() => {
+						showModal("Insert Inline Image", (onClose: () => void) => (
+							<InsertImageDialog activeEditor={activeEditor} onClose={onClose} />
+						));
+					}}
+					className="item"
+				>
+					<i className="icon image" />
+					<span className="text">Inline Image</span>
+				</DropDownItem>
+			</DropDown>
+			<Divider />
 			<ElementFormatDropdown disabled={!isEditable} value={elementFormat} editor={editor} isRTL={isRTL} />
+			{modal}
 		</div>
 	);
 }
