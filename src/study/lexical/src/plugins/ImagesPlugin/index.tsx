@@ -28,7 +28,7 @@ import {
 import { useEffect } from "react";
 
 import { $createImageNode, $isImageNode, ImageNode, ImagePayload } from "../../nodes/ImageNode";
-import { CAN_USE_DOM } from "../../shared/src/canUseDOM";
+import { CAN_USE_DOM } from "../../shared/canUseDOM";
 
 export type InsertImagePayload = Readonly<ImagePayload>;
 

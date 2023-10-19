@@ -19,7 +19,7 @@ import ImagesPlugin from "./plugins/ImagesPlugin";
 import InlineImagePlugin from "./plugins/InlineImagePlugin";
 import LinkPlugin from "./plugins/LinkPlugin";
 import ToolbarPlugin from "./plugins/ToolbarPlugin";
-import { CAN_USE_DOM } from "./shared/src/canUseDOM";
+import { CAN_USE_DOM } from "./shared/canUseDOM";
 import ContentEditable from "./ui/ContentEditable";
 import Placeholder from "./ui/Placeholder";
 import "./index.css";

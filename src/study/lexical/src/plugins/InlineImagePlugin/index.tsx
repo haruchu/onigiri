@@ -36,7 +36,7 @@ import {
 	InlineImageNode,
 	InlineImagePayload,
 } from "../../nodes/InlineImageNode";
-import { CAN_USE_DOM } from "../../shared/src/canUseDOM";
+import { CAN_USE_DOM } from "../../shared/canUseDOM";
 
 export type InsertInlineImagePayload = Readonly<InlineImagePayload>;
 

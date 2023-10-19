@@ -61,7 +61,7 @@ import DropDown, { DropDownItem } from "../../ui/DropDown";
 import DropdownColorPicker from "../../ui/DropdownColorPicker";
 import { getSelectedNode } from "../../utils/getSelectedNode";
 import { sanitizeUrl } from "../../utils/url";
-import { IS_APPLE } from "../../shared/src/environment";
+import { IS_APPLE } from "../../shared/environment";
 
 const blockTypeToBlockName = {
 	bullet: "Bulleted List",
