@@ -64,6 +64,7 @@ import { sanitizeUrl } from "../../utils/url";
 import { IS_APPLE } from "../../shared/environment";
 import { InsertImageDialog } from "../ImagesPlugin";
 import useModal from "../../hooks/useModal";
+import { INSERT_HORIZONTAL_RULE_COMMAND } from "@lexical/react/LexicalHorizontalRuleNode";
 
 const blockTypeToBlockName = {
 	bullet: "Bulleted List",
@@ -648,6 +649,15 @@ export default function ToolbarPlugin({ setIsLinkEditMode }: { setIsLinkEditMode
 				buttonAriaLabel="Insert specialized editor node"
 				buttonIconClassName="icon plus"
 			>
+				<DropDownItem
+					onClick={() => {
+						activeEditor.dispatchCommand(INSERT_HORIZONTAL_RULE_COMMAND, undefined);
+					}}
+					className="item"
+				>
+					<i className="icon horizontal-rule" />
+					<span className="text">Horizontal Rule</span>
+				</DropDownItem>
 				<DropDownItem
 					onClick={() => {
 						showModal("Insert Image", (onClose: () => void) => (

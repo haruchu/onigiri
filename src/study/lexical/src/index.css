@@ -551,6 +551,10 @@ i.number {
   overflow: hidden;
 }
 
+i.horizontal-rule {
+  background-image: url(./icons/horizontal-rule.svg);
+}
+
 i.plus {
   background-image: url(./icons/plus.svg);
 }

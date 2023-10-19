@@ -25,6 +25,7 @@ import Placeholder from "./ui/Placeholder";
 import "./index.css";
 import { ListPlugin } from "./plugins/LexicalListPlugin";
 import FloatingTextFormatToolbarPlugin from "./plugins/FloatingTextFormatToolbarPlugin";
+import { HorizontalRulePlugin } from "@lexical/react/LexicalHorizontalRulePlugin";
 
 export default function Editor(): JSX.Element {
 	const { historyState } = useSharedHistoryContext();
@@ -74,6 +75,7 @@ export default function Editor(): JSX.Element {
 					placeholder={placeholder}
 					ErrorBoundary={LexicalErrorBoundary}
 				/>
+				<HorizontalRulePlugin />
 				<ImagesPlugin />
 				<InlineImagePlugin />
 				<LinkPlugin />
