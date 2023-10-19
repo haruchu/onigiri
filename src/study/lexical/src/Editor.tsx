@@ -24,6 +24,7 @@ import ContentEditable from "./ui/ContentEditable";
 import Placeholder from "./ui/Placeholder";
 import "./index.css";
 import { ListPlugin } from "./plugins/LexicalListPlugin";
+import FloatingTextFormatToolbarPlugin from "./plugins/FloatingTextFormatToolbarPlugin";
 
 export default function Editor(): JSX.Element {
 	const { historyState } = useSharedHistoryContext();
@@ -84,6 +85,7 @@ export default function Editor(): JSX.Element {
 							isLinkEditMode={isLinkEditMode}
 							setIsLinkEditMode={setIsLinkEditMode}
 						/>
+						<FloatingTextFormatToolbarPlugin anchorElem={floatingAnchorElem} />
 					</>
 				)}
 			</div>

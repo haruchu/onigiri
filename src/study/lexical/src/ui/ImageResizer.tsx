@@ -25,9 +25,13 @@ const Direction = {
 export default function ImageResizer({
 	onResizeStart,
 	onResizeEnd,
+	buttonRef,
 	imageRef,
 	maxWidth,
 	editor,
+	showCaption,
+	setShowCaption,
+	captionsEnabled,
 }: {
 	editor: LexicalEditor;
 	buttonRef: { current: null | HTMLButtonElement };
@@ -206,6 +210,17 @@ export default function ImageResizer({
 	};
 	return (
 		<div ref={controlWrapperRef}>
+			{!showCaption && captionsEnabled && (
+				<button
+					className="image-caption-button"
+					ref={buttonRef}
+					onClick={() => {
+						setShowCaption(!showCaption);
+					}}
+				>
+					Add Caption
+				</button>
+			)}
 			<div
 				className="image-resizer image-resizer-n"
 				onPointerDown={(event) => {
