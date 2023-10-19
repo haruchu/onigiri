@@ -12,11 +12,11 @@ export const Component = () => {
 			localVideo.srcObject = mediaStream;
 		}
 
-        const localVideoStream = await navigator.mediaDevices.getDisplayMedia(mediaStreamConstraints);
-        gotLocalMediaStream(localVideoStream)
+		const localVideoStream = await navigator.mediaDevices.getDisplayMedia(mediaStreamConstraints);
+		gotLocalMediaStream(localVideoStream);
 		localVideoStream.getTracks()[0].addEventListener("ended", () => {
 			// ここで処理を記述
-            localVideo.style.display = "none";
+			localVideo.style.display = "none";
 		});
 	};
 
