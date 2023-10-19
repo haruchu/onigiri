@@ -374,11 +374,13 @@ i.h3 {
   background-image: url(./icons/type-h3.svg);
 }
 
-i.bullet-list {
+i.bullet-list,
+i.bullet {
   background-image: url(./icons/list-ul.svg);
 }
 
-i.numbered-list {
+i.numbered-list,
+i.number {
   background-image: url(./icons/list-ol.svg);
 }
 

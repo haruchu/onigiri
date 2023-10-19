@@ -23,6 +23,7 @@ import { CAN_USE_DOM } from "./shared/canUseDOM";
 import ContentEditable from "./ui/ContentEditable";
 import Placeholder from "./ui/Placeholder";
 import "./index.css";
+import { ListPlugin } from "./plugins/LexicalListPlugin";
 
 export default function Editor(): JSX.Element {
 	const { historyState } = useSharedHistoryContext();
@@ -75,6 +76,7 @@ export default function Editor(): JSX.Element {
 				<ImagesPlugin />
 				<InlineImagePlugin />
 				<LinkPlugin />
+				<ListPlugin />
 				{floatingAnchorElem && !isSmallWidthViewport && (
 					<>
 						<FloatingLinkEditorPlugin
