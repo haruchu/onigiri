@@ -1,0 +1,123 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ *
+ */
+.EditorTheme__ltr {
+	text-align: left;
+}
+.EditorTheme__rtl {
+	text-align: right;
+}
+.EditorTheme__paragraph {
+	margin: 0;
+	position: relative;
+}
+.EditorTheme__h1 {
+	font-size: 24px;
+	color: rgb(5, 5, 5);
+	font-weight: 400;
+	margin: 0;
+}
+.EditorTheme__h2 {
+	font-size: 15px;
+	color: rgb(101, 103, 107);
+	font-weight: 700;
+	margin: 0;
+	text-transform: uppercase;
+}
+.EditorTheme__h3 {
+	font-size: 12px;
+	margin: 0;
+	text-transform: uppercase;
+}
+.EditorTheme__indent {
+	--lexical-indent-base-value: 40px;
+}
+.EditorTheme__textBold {
+	font-weight: bold;
+}
+.EditorTheme__textUnderline {
+	text-decoration: underline;
+}
+.EditorTheme__link {
+	color: rgb(33, 111, 219);
+	text-decoration: none;
+}
+.EditorTheme__link:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+.EditorTheme__ol1 {
+	padding: 0;
+	margin: 0;
+	list-style-position: inside;
+}
+.EditorTheme__ol2 {
+	padding: 0;
+	margin: 0;
+	list-style-type: upper-alpha;
+	list-style-position: inside;
+}
+.EditorTheme__ol3 {
+	padding: 0;
+	margin: 0;
+	list-style-type: lower-alpha;
+	list-style-position: inside;
+}
+.EditorTheme__ol4 {
+	padding: 0;
+	margin: 0;
+	list-style-type: upper-roman;
+	list-style-position: inside;
+}
+.EditorTheme__ol5 {
+	padding: 0;
+	margin: 0;
+	list-style-type: lower-roman;
+	list-style-position: inside;
+}
+.EditorTheme__ul {
+	padding: 0;
+	margin: 0;
+	list-style-position: inside;
+}
+.EditorTheme__listItem {
+	margin: 0 32px;
+}
+.EditorTheme__nestedListItem {
+	list-style-type: none;
+}
+.EditorTheme__nestedListItem:before,
+.EditorTheme__nestedListItem:after {
+	display: none;
+}
+.EditorTheme__mark {
+	background: rgba(255, 212, 0, 0.14);
+	border-bottom: 2px solid rgba(255, 212, 0, 0.3);
+	padding-bottom: 2px;
+}
+.EditorTheme__markOverlap {
+	background: rgba(255, 212, 0, 0.3);
+	border-bottom: 2px solid rgba(255, 212, 0, 0.7);
+}
+.EditorTheme__mark.selected {
+	background: rgba(255, 212, 0, 0.5);
+	border-bottom: 2px solid rgba(255, 212, 0, 1);
+}
+.EditorTheme__markOverlap.selected {
+	background: rgba(255, 212, 0, 0.7);
+	border-bottom: 2px solid rgba(255, 212, 0, 0.7);
+}
+.EditorTheme__layoutContaner {
+	display: grid;
+	gap: 10px;
+	margin: 10px 0;
+}
+.EditorTheme__layoutItem {
+	border: 1px dashed #ddd;
+	padding: 8px 16px;
+}
