@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 /**
  * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
@@ -8,11 +9,14 @@
 
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
+import { HorizontalRulePlugin } from "@lexical/react/LexicalHorizontalRulePlugin";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import parse from "html-react-parser";
 
 import { useSharedHistoryContext } from "./context/SharedHistoryContext";
+import { generateContent } from "./exportDOM";
 import DragDropPaste from "./plugins/DragDropPastePlugin";
 import FloatingLinkEditorPlugin from "./plugins/FloatingLinkEditorPlugin";
 import ImagesPlugin from "./plugins/ImagesPlugin";
@@ -23,16 +27,17 @@ import { CAN_USE_DOM } from "./shared/canUseDOM";
 import ContentEditable from "./ui/ContentEditable";
 import Placeholder from "./ui/Placeholder";
 import "./index.css";
-import { ListPlugin } from "./plugins/LexicalListPlugin";
 import FloatingTextFormatToolbarPlugin from "./plugins/FloatingTextFormatToolbarPlugin";
-import { HorizontalRulePlugin } from "@lexical/react/LexicalHorizontalRulePlugin";
+import { ListPlugin } from "./plugins/LexicalListPlugin";
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
 export default function Editor(): JSX.Element {
 	const { historyState } = useSharedHistoryContext();
+	const [editor] = useLexicalComposerContext();
 	const [floatingAnchorElem, setFloatingAnchorElem] = useState<HTMLDivElement | null>(null);
 	const [isSmallWidthViewport, setIsSmallWidthViewport] = useState<boolean>(false);
 	const [isLinkEditMode, setIsLinkEditMode] = useState<boolean>(false);
-
+	const [content, setContent] = useState<string>("");
 	const placeholder = <Placeholder>入力してください</Placeholder>;
 
 	const onRef = (_floatingAnchorElem: HTMLDivElement) => {
@@ -59,8 +64,14 @@ export default function Editor(): JSX.Element {
 
 	return (
 		<>
+			<button
+				onClick={() => {
+					setContent(generateContent(editor));
+				}}
+			>
+				出力
+			</button>
 			<ToolbarPlugin setIsLinkEditMode={setIsLinkEditMode} />
-
 			<div className={`editor-container`}>
 				<DragDropPaste />
 				<HistoryPlugin externalHistoryState={historyState} />
@@ -91,6 +102,7 @@ export default function Editor(): JSX.Element {
 					</>
 				)}
 			</div>
+			<div>{parse(content)}</div>
 		</>
 	);
 }

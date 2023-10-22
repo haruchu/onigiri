@@ -25,6 +25,7 @@
     "@types/styled-components": "^5.1.26",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.4",
+    "html-react-parser": "^4.2.8",
     "katex": "^0.16.9",
     "lexical": "^0.12.2",
     "lodash-es": "^4.17.21",
